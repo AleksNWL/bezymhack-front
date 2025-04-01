@@ -1,7 +1,7 @@
 import PasswordGame from '../../components/PasswordGame/PasswordGame';
 import './style.css'
 
-const PasswordGamePage = () => {
+const RegistationPage = () => {
     return (
         <div className="page-container">
             <h1>Регистрация</h1>
@@ -10,4 +10,4 @@ const PasswordGamePage = () => {
     );
 };
 
-export default PasswordGamePage;
+export default RegistationPage;

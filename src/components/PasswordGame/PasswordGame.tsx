@@ -122,8 +122,10 @@ const PasswordGame = () => {
         <div className="password-game">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <label>
-                    E-mail:
-                    <input {...register("email", {
+                    <input
+                        type="text"
+                        placeholder="Введите e-mail"
+                        {...register("email", {
                         required: "Email обязателен",
                         pattern: { value: /\S+@\S+\.\S+/, message: "Неверный формат email" }
                     })} />
@@ -131,9 +133,9 @@ const PasswordGame = () => {
                 {errors.email && <p>{errors.email.message}</p>}
 
                 <label>
-                    Пароль:
                     <input
-                        type="text"
+                        type="password"
+                        placeholder="Введите пароль"
                         {...register("password", {
                             required: "Пароль обязателен",
                             validate: (value) => rules.every(rule => rule.validator(value)) || "Пароль не соответствует правилам"
