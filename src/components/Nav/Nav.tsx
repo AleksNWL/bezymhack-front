@@ -7,7 +7,7 @@ const Nav: React.FC = () => {
     return (
         <Menu mode="horizontal" style={{ justifyContent: 'center' }}>
             <Menu.Item key="home">
-                <a href="/">Home</a>
+                <a href="/main">Purchaseses</a>
             </Menu.Item>
             <Menu.Item key="auth">
                 <a href="/login">Login</a>

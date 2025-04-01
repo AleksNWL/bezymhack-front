@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import styles from "./Login.module.css";
+import { useNavigate } from "react-router-dom";
 
 const emailList = [
     "admin@gmail.com",
@@ -15,6 +16,8 @@ const Login = () => {
     const [spinning, setSpinning] = useState(false);
     const [emailGenerated, setEmailGenerated] = useState(false);
 
+    const navigate = useNavigate();
+
     const generateEmail = () => {
         setSpinning(true);
         setTimeout(() => {
@@ -27,6 +30,7 @@ const Login = () => {
 
     const handleLogin = () => {
         console.log("Вход с почтой:", email, "и паролем:", password);
+        navigate("/");
     };
 
     const isLoginEnabled = emailGenerated && password.trim().length > 0;
