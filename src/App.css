@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
   padding: 0;
@@ -21,6 +22,35 @@ body {
   padding: 10px 20px;
   border-radius: 10px;
   z-index: 2;
+
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes fall {
@@ -34,10 +64,18 @@ body {
   }
 }
 
+
 .currency-symbol {
   position: absolute;
   top: -50px;
   font-size: 30px;
   color: rgba(255, 255, 255, 0.8);
   animation: fall linear infinite;
+}
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
 }

@@ -1,7 +1,10 @@
+
 import "./app.css";
 import { useEffect, useState } from "react";
 import Login from "./pages/login";
 import Registation from "./pages/registation";
+import Main from './pages/Main/Main'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const symbols = ["$", "€", "¥", "₽", "£", "₩", "₹"];
 
@@ -11,6 +14,18 @@ type CurrencyElement = {
     left: string;
     animationDuration: string;
 };
+
+// function App() {
+
+//   return (
+//     <Router>
+//       <Routes>
+//         <Route path="/" element={<Main />} />
+//       </Routes>
+//     </Router>
+//   )
+// }
+
 
 const App = () => {
     const [currencyElements, setCurrencyElements] = useState<CurrencyElement[]>([]);
