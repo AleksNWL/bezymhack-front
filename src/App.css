@@ -1,3 +1,28 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  background-color: black;
+}
+
+.money-background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  position: relative;
+}
+
+.title {
+  color: white;
+  font-size: 24px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px 20px;
+  border-radius: 10px;
+  z-index: 2;
+
 #root {
   width: 100vw;
   height: 100vh;
@@ -28,12 +53,25 @@
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@keyframes fall {
+  0% {
+    transform: translateY(-100px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
   }
 }
 
+
+.currency-symbol {
+  position: absolute;
+  top: -50px;
+  font-size: 30px;
+  color: rgba(255, 255, 255, 0.8);
+  animation: fall linear infinite;
+}
 .card {
   padding: 2em;
 }
