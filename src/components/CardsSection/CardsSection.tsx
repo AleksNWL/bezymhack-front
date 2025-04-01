@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { Card } from 'antd';
 import { CardType } from "../../types/Card"
+import { ApiClient } from '../../api';
+import { Purchase } from '../../types/ApiTypes';
 
 interface CardsSectionProps {
     changeArray: (array: Array<CardType>) => void;
@@ -10,6 +12,11 @@ interface CardsSectionProps {
 const CardsSection: React.FC<CardsSectionProps> = ({ changeArray, getArray }) => {
     useEffect(() => {
         const fetchData = async () => {
+            const api = new ApiClient()
+            api.getAllPurchases()
+                .then((purchases: Purchase[]) => {
+                    console.log("Purchases", purchases)
+                })
             const mockData: Array<CardType> = [
                 { id: 1, title: 'Card 1', description: 'This is card 1', price: 234, x: 0, y: 0 },
                 { id: 2, title: 'Card 2', description: 'This is card 2', price: 244, x: 0, y: 0 },

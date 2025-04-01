@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import RuleList, { Rule } from '../RuleList/RuleList';
 import './PasswordGame.css';
+import { ApiClient } from '../../api';
+import { UserCreate } from '../../types/ApiTypes';
+import { useNavigate } from 'react-router-dom';
 
 interface FormValues {
     email: string;
@@ -95,9 +98,21 @@ const PasswordGame = () => {
     const [rules, setRules] = useState<Rule[]>(initialRules);
     const [gameWon, setGameWon] = useState(false);
     const { register, handleSubmit, formState: { errors } } = useForm<FormValues>();
+    const navigate = useNavigate();
 
     const onSubmit = (data: FormValues) => {
-        console.log("Отправленные данные:", data);
+        const api = new ApiClient();
+        const payload: UserCreate = {
+            name: data.email,
+            email: data.email,
+            password: data.password
+        }
+        api.createUser(payload)
+            .then(() => {
+                navigate("/main");
+            }).catch((error) => {
+                console.error("Ошибка при создании пользователя:", error);
+            });
     };
 
     useEffect(() => {
@@ -126,9 +141,9 @@ const PasswordGame = () => {
                         type="text"
                         placeholder="Введите e-mail"
                         {...register("email", {
-                        required: "Email обязателен",
-                        pattern: { value: /\S+@\S+\.\S+/, message: "Неверный формат email" }
-                    })} />
+                            required: "Email обязателен",
+                            pattern: { value: /\S+@\S+\.\S+/, message: "Неверный формат email" }
+                        })} />
                 </label>
                 {errors.email && <p>{errors.email.message}</p>}
 
